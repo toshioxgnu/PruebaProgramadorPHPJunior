@@ -90,3 +90,23 @@ class getIdicadoresbyCodigoyfecha{
         return $indicadores;
     }
 }
+
+class getTipoIndicadores{
+    public function getTipoIndicadores(){
+        // connect to database
+        $db = \Config\Database::connect();
+        $builder = $db->table('indicadores');
+        $builder->select('codigoIndicador');
+        $builder->distinct();
+        $builder->groupBy('codigoIndicador');
+        $query = $builder->get();
+        $result = $query->getResult();
+        // pass result to indicadores
+        $tipoindicadores = array();
+        foreach ($result as $row) {
+            $tipoindicador = $row -> codigoIndicador;
+            array_push($tipoindicadores, $tipoindicador);
+        }
+        return $tipoindicadores;
+    }
+}
