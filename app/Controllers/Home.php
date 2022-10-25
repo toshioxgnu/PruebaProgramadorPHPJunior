@@ -13,13 +13,18 @@ class Home extends BaseController
     }
 
 
-    function getIndicadoresUF( $codigoIndicador, $fechaInicio, $fechaTermino ) {
-        $getIndicadoresporfecha = new getIdicadoresbyCodigoyfecha();
-        $arrayIndicadores = $getIndicadoresporfecha->getIndicadoresbyCodigoyfecha($codigoIndicador, $fechaInicio, $fechaTermino);
+    // post function to send indicadores
+    public function getIndicadoresUF()
+    {
+        $data = $this->request->getPost()->this->request->isAJAX();
+        $codigoIndicador = $data['codigoIndicador'];
+        $fechaInicial = $data['fechaInicial'];
+        $fechaFinal = $data['fechaFinal'];
         
-        //convert array to json
-        $jsonIndicadores = json_encode($arrayIndicadores);
-        return $jsonIndicadores;
+        $indicadores = new getIdicadoresbyCodigoyfecha();
+        $indicadores->getIndicadoresbyCodigoyfecha($codigoIndicador, $fechaInicial, $fechaFinal);
+
+        echo json_encode($indicadores);
     }
 
 

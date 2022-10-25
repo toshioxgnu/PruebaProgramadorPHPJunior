@@ -23,7 +23,7 @@
 <!-- SCRIPTS -->
 <!-- import welcome js -->
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-<script src="<?php echo base_url().'/app/assets/js/welcome.js'; ?>"></script>
+<script src="/assets/js/welcome.js"></script>
 
 
 </body>
